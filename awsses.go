@@ -96,6 +96,8 @@ func (m *Message) Bytes() ([]byte, error) {
         buf.WriteString(fmt.Sprintf("%s\n\n", attachment))
     }
 
+    buf.WriteString(fmt.Sprintf("--%s\n", boundary))
+
     return buf.Bytes(), nil
 }
 
