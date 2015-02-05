@@ -63,7 +63,7 @@ func (m *Message) Bytes() ([]byte, error) {
     buf.WriteString(fmt.Sprintf("Subject: %s\n", m.Subject))
     buf.WriteString("MIME-Version: 1.0\n")
     buf.WriteString(fmt.Sprintf("Message-ID: <%s@message>\n", u))
-    buf.WriteString("Content-Type: multipart/mixed;\n")
+    buf.WriteString("Content-Type: multipart/alternative;\n")
     buf.WriteString(fmt.Sprintf("\tboundary=\"%s\"\n\n", boundary))
 
     if m.Text != "" {
