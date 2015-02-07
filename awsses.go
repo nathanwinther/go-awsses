@@ -68,15 +68,21 @@ func (m *Message) Bytes() ([]byte, error) {
 
     if m.Text != "" {
         buf.WriteString(fmt.Sprintf("--%s\n", boundary))
-        buf.WriteString("Content-Type: text/plain; charset=\"us-ascii\"\n")
-        buf.WriteString("Content-Transfer-Encoding: quoted-printable\n\n")
+        buf.WriteString("Content-Type: text/plain; charset=ISO-8859-1\n")
+        buf.WriteString("Content-Transfer-Encoding: QUOTED-PRINTABLE\n")
+        buf.WriteString("Content-Disposition: inline\n")
+        buf.WriteString("\n")
+
         buf.WriteString(fmt.Sprintf("%s\n\n", m.Text))
     }
 
     if m.Html != "" {
         buf.WriteString(fmt.Sprintf("--%s\n", boundary))
-        buf.WriteString("Content-Type: text/html; charset=\"iso-8859-1\"\n")
-        buf.WriteString("Content-Transfer-Encoding: quoted-printable\n\n")
+        buf.WriteString("Content-Type: text/html; charset=ISO-8859-1\n")
+        buf.WriteString("Content-Transfer-Encoding: QUOTED-PRINTABLE\n")
+        buf.WriteString("Content-Disposition: inline\n")
+        buf.WriteString("\n")
+
         buf.WriteString(fmt.Sprintf("%s\n\n", m.Html))
     }
 
